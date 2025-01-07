@@ -48,34 +48,33 @@ def create_prefix():
     main_menu()
 def main_menu():
     os.system("clear")
-    print("Box64Droid by Ilya114, Glory to Ukraine!")
+    print("Box64Droid bởi Ilya114!")
     print("")
-    print("Select to start:")
+    print("Chọn số:")
     print("1) Wine")
-    print("2) Wine (debug version)")
-    print("3) Change Wine version")
-    print("4) Recreate Wine prefix")
-    print("5) Check for updates")
-    print("6) Update Box64")
+    print("2) Wine (gỡ lỗi)")
+    print("3) Đổi phiên bản wine")
+    print("4) Tạo lại môi trường wine")
+    print("5) Cài đặt")
+    print("6) Cập nhật Box64")
     print("7) Winetricks")
-    print("8) Exit")
+    print("8) Thoát")
     print("")
     choice = input()
     if choice != "1" and choice != "2" and choice != "3" and choice != "4" and choice != "5" and choice != "6" and choice != "7" and choice != "8":
-        print("Incorrect or empty option!")
+        print("Lựa chọn không chính xác!")
         main_menu()
     elif choice == "1":
         os.system("python3 $PREFIX/bin/start-box64.py")
         exit()
     elif choice == "2":
         os.system("clear")
-        print("Wine will be started with debug info, log will be saved in /sdcard/Box64Droid.log. Send /sdcard/Box64Droid.log in Telegram group if you have black screen or crashed apps/games")
-        print("To exit from Box64Droid press type '1' (or any key) or '2' to back to main menu then press Enter")
+        print("
         os.system("BOX86_LOG=1 BOX86_SHOWSEGV=1 BOX86_DYNAREC_LOG=1 BOX86_DYNAREC_MISSING=1 BOX86_DLSYM_ERROR=1 BOX64_LOG=1 BOX64_SHOWSEGV=1 BOX64_DYNAREC_LOG=1 BOX64_DYNAREC_MISSING=1 BOX64_DLSYM_ERROR=1 WINEDEBUG=+err taskset -c 4-7 box64 wine explorer /desktop=shell,800x600 $PREFIX/glibc/opt/7-Zip/7zFM >/sdcard/Box64Droid.log 2>&1 &")
         os.system("am start -n com.termux.x11/com.termux.x11.MainActivity &>/dev/null")
         stop = input()
         if stop == "2":
-            print(" Stopping Wine...")
+            print(" Đang dừng wine...")
             os.system("box64 wineserver -k &>/dev/null")
             main_menu()
         else:
@@ -91,7 +90,7 @@ def main_menu():
     elif choice == "3":
         def change_wine_version():
             os.system("clear")
-            print("Select Wine (WoW64) version to install:")
+            print("Chọn phiên bản wine để cài:")
             print("1) Wine 9.1")
             print("2) Wine 9.2")
             print("3) Wine 9.4")
@@ -107,53 +106,46 @@ def main_menu():
             elif choice == "7":
                 main_menu()
             else:
-                os.system("clear")
+                os.system("clear"
                 print("Removing previous Wine version...")
                 if os.path.exists("/data/data/com.termux/files/usr/glibc/opt/wine"):
                     shutil.rmtree("/data/data/com.termux/files/usr/glibc/opt/wine")
                 if choice == "1":
-                    print("Downloading Wine 9.1 (WoW64)...")
+                    print("Đang cài Wine 9.1 (WoW64)...")
                     print("")
                     os.system("wget -q --show-progress https://github.com/Ilya114/Box64Droid/releases/download/alpha/wine-9.1-esync.tar.xz")
                     print("")
-                    print("Unpacking Wine 9.1...")
                     os.system("tar -xf wine-9.1-esync.tar.xz -C $PREFIX/glibc/opt")
                 elif choice == "2":
-                    print("Downloading Wine 9.2 (WoW64)...")
+                    print("Đang cài Wine 9.2 (WoW64)...")
                     print("")
                     os.system("wget -q --show-progress https://github.com/Ilya114/Box64Droid/releases/download/alpha/wine-9.2-amd64-wow64.tar.xz")
                     print("")
-                    print("Unpacking Wine 9.2 (WoW64)...")
                     os.system("tar -xf wine-9.2-amd64-wow64.tar.xz -C $PREFIX/glibc/opt")
                 elif choice == "3":
-                    print("Downloading Wine 9.4 (WoW64)...")
+                    print("Đang cài Wine 9.4 (WoW64)...")
                     print("")
                     os.system("wget -q --show-progress https://github.com/Ilya114/Box64Droid/releases/download/alpha/wine-9.4-amd64-wow64.tar.xz")
                     print("")
                     print("Unpacking Wine 9.4 (WoW64)...")
                     os.system("tar -xf wine-9.4-amd64-wow64.tar.xz -C $PREFIX/glibc/opt")
                 elif choice == "4":
-                    print("Downloading Wine 9.7 (WoW64)...")
+                    print("Đang cài Wine 9.7 (WoW64)...")
                     print("")
                     os.system("wget -q --show-progress https://github.com/Ilya114/Box64Droid/releases/download/alpha/wine-9.7-glibc-wow64.tar.xz")
                     print("")
-                    print("Unpacking Wine 9.7 (WoW64)...")
                     os.system("tar -xf wine-9.7-glibc-wow64.tar.xz -C $PREFIX/glibc/opt")
                     os.system("mv $PREFIX/glibc/opt/wine-git-166895a-exp-wow64-amd64 $PREFIX/glibc/opt/wine")
                 elif choice == "5":
-                    print("Downloading Wine 9.11 (WoW64)...")
-                    print("")
+                    print("Đang cài Wine 9.11 (WoW64)")
                     os.system("wget -q --show-progress https://github.com/Ilya114/Box64Droid/releases/download/alpha/wine-9.11-amd64-wow64.tar.xz")
                     print("")
-                    print("Unpacking Wine 9.11 (WoW64)...")
                     os.system("tar -xf wine-9.11-glibc-amd64-wow64.tar.xz -C $PREFIX/glibc/opt")
                     os.system("mv $PREFIX/glibc/opt/wine-git-63e25f9-exp-wow64-amd64 $PREFIX/glibc/opt/wine")
                 elif choice == "6":
-                    print("Downloading Wine 9.13 (WoW64)...")
-                    print("")
+                    print("Đang cài Wine 9.13 (WoW64)")
                     os.system("wget -q --show-progress https://github.com/Ilya114/Box64Droid/releases/download/alpha/wine-9.13-glibc-amd64-wow64.tar.xz")
                     print("")
-                    print("Unpacking Wine 9.13 (WoW64)...")
                     os.system("tar -xf wine-9.13-glibc-amd64-wow64.tar.xz -C $PREFIX/glibc/opt")
                     os.system("mv $PREFIX/glibc/opt/wine-git-8d25995-exp-wow64-amd64 $PREFIX/glibc/opt/wine")
                 os.system("rm wine*")
@@ -173,13 +165,13 @@ def main_menu():
         exit()
     elif choice == "7":
         os.system("clear")
-        print("Starting Winetricks... To back to main menu press Ctrl+c exit from Winetricks in Termux-X11")
+        print("Đang chạy winetricks, để trở về menu thì ctrl + c")
         os.system("am start -n com.termux.x11/com.termux.x11.MainActivity &>/dev/null")
         os.system("box64 winetricks >/dev/null 2>&1")
         main_menu()
     elif choice == "8":
         print("")
-        print("Stopping Termux-X11...")
+        print("Đang tắt công cụ...")
         print("")
         os.system('pkill -f "app_process / com.termux.x11"')
         os.system('pkill -f pulseaudio')
@@ -193,7 +185,7 @@ def start():
         check_prefix()
         main_menu()
     elif sys.argv[1] == "--uninstall":
-        print("Uninstalling Box64Droid...")
+        print("Đang gỡ Box64Droid...")
         glibc_path = "/data/data/com.termux/files/usr/glibc"
         wine_prefix_path ="/data/data/com.termux/files/home/.wine"
         shutil.rmtree(glibc_path)
@@ -206,15 +198,13 @@ def start():
     elif sys.argv[1] == "--version":
         print("18.04.24")
     elif sys.argv[1] == "--help":
-        print("Box64Droid (native version) - configured tools to launch Box64, Box86, Wine 8.0, DXVK with Adreno GPU drivers in Termux")
         print("Usage: box64droid {argument}")
-        print("Available arguments:")
         print("--start - start Box64Droid")
-        print("--uninstall - uninstall Box64Droid (all data in prefix will be clear)")
-        print("--reinstall - reinstall Box64Droid (all data in prefix will be clear)")
-        print("--version - show current version of Box64Droid")
-        print("--help - see this menu and exit")
+        print("--uninstall - gỡ Box64Droid")
+        print("--reinstall - cài lại Box64Droid ")
+        print("--version - xem phiên bản hiện tại")
+        print("--help - hiện thêm lệnh")
     else:
-        print("Invalid argument, use --help to see available arguments")
+        print("Sai cú pháp, vui lòng nhập box64droid --help để hiển thị lệnh khả dụng.")
 if __name__ == "__main__":
     start()
